@@ -1,0 +1,7 @@
+node_modules
+target
+.lein-*
+app/bower_components
+.sass-cache
+.tmp
+dist

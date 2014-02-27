@@ -1,0 +1,36 @@
+{
+  "name": "generator-cljs-fullstack",
+  "version": "0.0.0",
+  "description": "Yeoman generator",
+  "license": "MIT",
+  "main": "app/index.js",
+  "repository": "johntrimble/generator-cljs-fullstack",
+  "author": {
+    "name": "John Trimble",
+    "email": "trimblej@gmail.com",
+    "url": "https://github.com/johntrimble"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "files": [
+    "app"
+  ],
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "dependencies": {
+    "yeoman-generator": "~0.16.0",
+    "chalk": "~0.4.0",
+    "underscore.string": "^2.3.3"
+  },
+  "devDependencies": {
+    "mocha": "*"
+  },
+  "peerDependencies": {
+    "yo": ">=1.0.0"
+  }
+}
