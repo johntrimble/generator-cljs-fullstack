@@ -1,8 +1,8 @@
 {
   "name": "generator-cljs-fullstack",
   "version": "0.0.0",
-  "description": "Yeoman generator",
-  "license": "MIT",
+  "description": "Yeoman generator for webapps utilizing ClojureScript on the front-end and back-end.",
+  "license": "BSD",
   "main": "app/index.js",
   "repository": "johntrimble/generator-cljs-fullstack",
   "author": {
@@ -20,7 +20,9 @@
     "app"
   ],
   "keywords": [
-    "yeoman-generator"
+    "yeoman-generator",
+    "clojure",
+    "ClojureScript"
   ],
   "dependencies": {
     "yeoman-generator": "~0.16.0",
