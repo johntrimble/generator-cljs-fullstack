@@ -1,3 +1,5 @@
+// Significant portions of this file come from the following:
+// https://github.com/yeoman/generator-webapp/blob/master/app/templates/Gruntfile.js
 'use strict';
 
 function buildCljsbuildCommandString(

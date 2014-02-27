@@ -1,47 +1,103 @@
-# generator-cljs-fullstack [![Build Status](https://secure.travis-ci.org/johntrimble/generator-cljs-fullstack.png?branch=master)](https://travis-ci.org/johntrimble/generator-cljs-fullstack)
+# Cljs Full Stack
 
-> [Yeoman](http://yeoman.io) generator
+Yeoman generator for building web applications leveraging ClojureScript on both the front-end and back-end.
 
+Features:
 
-## Getting Started
+* Livereload of client and server files
+* Easy distribution generation
+* Stack traces with source maps applied in Node.js
+* Support for testing using Specljs
+* Support for Sass and Compass
 
-### What is Yeoman?
+## Requirements
 
-Trick question. It's not a thing. It's this guy:
+* [Yeoman](http://yeoman.io/gettingstarted.html) (>= 1.1.2)
+* [Node.js]() (>=0.10.26)
+* [Grunt](http://gruntjs.com/getting-started) (>=4.2)
+* [Compass](http://compass-style.org/install/) (>=0.12.2) 
+* [Leiningen](http://leiningen.org/#install) (>=2.3.2)
 
-![](http://i.imgur.com/JHaAlBJ.png)
+## Usage
 
-Basically, he wears a top hat, lives in your computer, and waits for you to tell him what kind of application you wish to create.
-
-Not every new computer comes with a Yeoman pre-installed. He lives in the [npm](https://npmjs.org) package repository. You only have to ask for him once, then he packs up and moves into your hard drive. *Make sure you clean up, he likes new and shiny things.*
-
-```
-$ npm install -g yo
-```
-
-### Yeoman Generators
-
-Yeoman travels light. He didn't pack any generators when he moved in. You can think of a generator like a plug-in. You get to choose what type of application you wish to create, such as a Backbone application or even a Chrome extension.
-
-To install generator-cljs-fullstack from npm, run:
+First, install the generator:
 
 ```
-$ npm install -g generator-cljs-fullstack
+npm install -g generator-cljs-fullstack
 ```
 
-Finally, initiate the generator:
+Then create a new project by executing the following:
 
 ```
-$ yo cljs-fullstack
+mkdir my-project
+cd my-project
+yo cljs-framework <app-name>
 ```
 
-### Getting To Know Yeoman
+### Development
+From the project root, execute the following:
 
-Yeoman has a heart of gold. He's a person with feelings and opinions, but he's very easy to work with. If you think he's too opinionated, he can be easily convinced.
+```
+grunt serve
+```
 
-If you'd like to get to know Yeoman better and meet some of his friends, [Grunt](http://gruntjs.com) and [Bower](http://bower.io), check out the complete [Getting Started Guide](https://github.com/yeoman/yeoman/wiki/Getting-Started).
+This will:
 
+* Compile ClojureScript source
+* Compile Sass source
+* Start a node server running backend code at [http://localhost:4000](http://localhost:4000)
+* Start a static content server at [http://localhost:9000](http://localhost:9000)
+	* Proxies `http://localhost:9000/api/` to `http://localhost:4000/api`
+	* Live reloads the browser on content changes (updating ClojureScript code, HTML, CSS, etc.)
 
-## License
+Assuming there are no errors, this task should automagically open up a browser window to [http://localhost:9000](http://localhost:9000).
 
-MIT
+If you'd like to have your tests run continuously in the background as well, use the `--with-tests` options:
+
+```
+grunt serve --with-tests
+```
+
+	
+### Distribution
+From the project root, execute the following:
+
+```
+grunt
+```
+
+This will:
+
+* Compile ClojureScript server source
+* Compile ClojureScript client source with advanced mode
+* Compile Sass source
+* Concatenate and minify JavaScript source
+* Minify HTML source
+* Put all backend assets under `dist`
+* Put all frontend assets under the `dist/public` directory
+* Generate a suitable `package.json` at `dist/package.json`
+
+Assuming there are no errors, the `dist` directory will be a self contained distribution of the application. The application can be started by running the following:
+
+```
+cd dist
+npm install
+npm start
+```
+
+### Testing
+From the project root, execute the following:
+
+```
+grunt test
+```
+
+This will:
+
+* Compile ClojureScript source for the backend and frontend
+* Run the backend and frontend tests
+
+Note: This effectively runs `lien cljsbuild once` twice, once for the backend and once for the frontend. This means it's slow. If you plan on running tests continuously, you may want to look at running in develop
+
+### License
+[BSD License](http://opensource.org/licenses/bsd-license.php)
