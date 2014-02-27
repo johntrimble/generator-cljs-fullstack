@@ -31,7 +31,7 @@ Then create a new project by executing the following:
 ```
 mkdir my-project
 cd my-project
-yo cljs-framework <app-name>
+yo cljs-fullstack <app-name>
 ```
 
 ### Development
