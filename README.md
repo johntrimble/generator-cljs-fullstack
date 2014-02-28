@@ -97,4 +97,4 @@ This will:
 * Compile ClojureScript source for the backend and frontend
 * Run the backend and frontend tests
 
-Note: This effectively runs `lien cljsbuild once` twice, once for the backend and once for the frontend. This means it's slow. If you plan on running tests continuously, you may want to look at running in develop
+Note: This effectively runs `lein cljsbuild once` twice, once for the backend and once for the frontend. This means it's slow. If you plan on running tests continuously, you may want to look at running in develop
