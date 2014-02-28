@@ -47,7 +47,7 @@ This will:
 * Compile Sass source
 * Start a node server running backend code at [http://localhost:4000](http://localhost:4000)
 * Start a static content server at [http://localhost:9000](http://localhost:9000)
-	* Proxies `http://localhost:9000/api/` to `http://localhost:4000/api`
+	* Proxies `http://localhost:9000/api/` to `http://localhost:4000/api/`
 	* Live reloads the browser on content changes (updating ClojureScript code, HTML, CSS, etc.)
 
 Assuming there are no errors, this task should automagically open up a browser window to [http://localhost:9000](http://localhost:9000).
