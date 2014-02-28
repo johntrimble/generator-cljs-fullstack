@@ -10,11 +10,11 @@ All rights reserved.
 
 This project also incoporates work covered by the following copyright and permission notices:
 
-Project: https://github.com/yeoman/generator-webapp
+Project: https://github.com/yeoman/generator-webapp<br>
 License: http://opensource.org/licenses/bsd-license.php
 
 
-Project: https://github.com/ecmendenhall/specljs-template
+Project: https://github.com/ecmendenhall/specljs-template<br>
 Copyright (C) 2013 Connor Mendenhall, 2014 Micah Martin
 
 > Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
