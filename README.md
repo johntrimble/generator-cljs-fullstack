@@ -23,7 +23,7 @@ Features:
 First, install the generator:
 
 ```
-npm install -g generator-cljs-fullstack
+npm install -g git+https://github.com/johntrimble/generator-cljs-fullstack.git#develop
 ```
 
 Then create a new project by executing the following:
