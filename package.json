@@ -1,6 +1,6 @@
 {
   "name": "generator-cljs-fullstack",
-  "version": "0.0.0",
+  "version": "0.1.0-alpha",
   "description": "Yeoman generator for webapps utilizing ClojureScript on the front-end and back-end.",
   "license": "BSD",
   "main": "app/index.js",
@@ -8,7 +8,7 @@
   "author": {
     "name": "John Trimble",
     "email": "trimblej@gmail.com",
-    "url": "https://github.com/johntrimble"
+    "url": "http://johntrimble.com"
   },
   "engines": {
     "node": ">=0.10.0"
