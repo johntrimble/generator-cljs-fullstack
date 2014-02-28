@@ -5,10 +5,9 @@
 ;; we don't want to include it in our tests as it will stomp on the main
 ;; function.
 
-;; Fixes exception strack traces with source maps
-(-> "source-map-support" js/require .install)
-
 (defn ^:export main []
+  ;; Fixes exception strack traces with source maps
+  (-> "source-map-support" js/require .install)
   (start-server! {}))
 
 (set! *main-cli-fn* main)
