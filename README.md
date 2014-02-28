@@ -12,7 +12,7 @@ Features:
 
 ## Requirements
 
-* [Yeoman](http://yeoman.io/gettingstarted.html) (>= 1.1.2)
+* [Yeoman](http://yeoman.io/gettingstarted.html) (>=1.1.2)
 * [Node.js]() (>=0.10.26)
 * [Grunt](http://gruntjs.com/getting-started) (>=4.2)
 * [Compass](http://compass-style.org/install/) (>=0.12.2) 
