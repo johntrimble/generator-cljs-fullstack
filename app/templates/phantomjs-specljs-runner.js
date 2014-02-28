@@ -1,5 +1,4 @@
 #!/usr/bin/env phantomjs
-// Taken from https://github.com/ecmendenhall/specljs-template/blob/master/src/leiningen/new/specljs/project.clj
 var p = require('webpage').create();
 var sys = require('system');
 
