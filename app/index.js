@@ -3,11 +3,14 @@ var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
-var _ = require('underscore.string')
 
 
 var CljsFullstackGenerator = yeoman.generators.Base.extend({
   init: function () {
+    // setup the appname
+    this.argument('appname', { type: String, required: false });
+    this.appname = this.appname || this._.titleize(this._.humanize(path.basename(process.cwd())));
+
     this.pkg = yeoman.file.readJSON(path.join(__dirname, '../package.json'));
 
     this.on('end', function () {
@@ -108,7 +111,7 @@ var CljsFullstackGenerator = yeoman.generators.Base.extend({
   cljs: function() {
     this.template('project.clj');
 
-    var name = _.slugify(this.appname);
+    var name = this._.slugify(this.appname);
     ['src/client/' + name + '/client',
      'src/client-bootstrap/' + name + '/client',
      'src/server/' + name + '/server',
