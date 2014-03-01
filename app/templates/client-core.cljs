@@ -17,16 +17,7 @@
        (sort-by first)
        (map (fn [[k v]] v))))
 
-(defn load-features! []
-  (XhrIo/send "/api/features"
-              (fn [event]
-                (let [xhr (.-target event)]
-                  (if (.isSuccess xhr)
-                    (swap! app-state assoc :features (js->clj (.getResponseJson xhr)
-                                                              :keywordize-keys true))
-                    (.log js/console "Could not load features."))))))
-
-(defn feature-view [{:keys [title description]}]
+(defn feature-view [{:keys [title description]} owner]
   (reify
     om/IRender
     (render [this]
@@ -34,7 +25,7 @@
                      (dom/h4 nil title)
                      (dom/p nil description)))))
 
-(defn feature-column-view [col-count column]
+(defn feature-column-view [col-count column owner]
   (reify
     om/IRender
     (render [this]
@@ -51,3 +42,16 @@
               (apply dom/div #js {:className "row marketing"}
                      (om/build-all (partial feature-column-view col-count)
                                    columns))))))
+
+(defn load-features! []
+  (XhrIo/send "/api/features"
+              (fn [event]
+                (let [xhr (.-target event)]
+                  (if (.isSuccess xhr)
+                    (swap! app-state assoc :features (js->clj (.getResponseJson xhr)
+                                                              :keywordize-keys true))
+                    (.log js/console "Could not load features."))))))                                   
+(defn insert-root-component! [target]
+  (om/root feature-list-view
+           app-state
+           {:target target}))

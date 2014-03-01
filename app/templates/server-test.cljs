@@ -1,4 +1,4 @@
-(ns test.server-tests
+(ns <%= _.slugify(appname) %>.server.server-tests
   (:require [specljs.core :refer-macros [describe
                                          it
                                          should==
@@ -9,7 +9,7 @@
                                          should
                                          should-not-contain
                                          should-contain]]
-            [test.server.handlers :as handlers]))
+            [<%= _.slugify(appname) %>.server.handlers :as handlers]))
 
 (let [headers (atom {})
       body (atom nil)

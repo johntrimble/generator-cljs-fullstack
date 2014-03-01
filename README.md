@@ -26,6 +26,15 @@ First, install the generator:
 npm install -g generator-cljs-fullstack
 ```
 
+If you want to do development on the generator itself, do this instead:
+
+```
+git clone https://github.com/johntrimble/generator-cljs-fullstack.git
+cd generator-cljs-fullstack
+npm install
+npm link
+```
+
 Then create a new project by executing the following:
 
 ```

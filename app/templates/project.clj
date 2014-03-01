@@ -45,7 +45,7 @@
                        :client-test
                        {:source-paths ["src/common" "src/client" "test/client"]
                         :notify-command ["./node_modules/.bin/phantomjs"
-                                         "scripts/phantomjs_specljs_runner.js"
+                                         "scripts/phantomjs-specljs-runner.js"
                                          "scripts/phantomjs-shims.js"
                                          "app/bower_components/react/react.js"
                                          "target/test/client/main.js"]
