@@ -1,8 +1,10 @@
+language: clojure
+lein: lein2
 before_install:
   - currentfolder=${PWD##*/}
   - if [ "$currentfolder" != 'generator-cljs-fullstack' ]; then cd .. && eval "mv $currentfolder generator-cljs-fullstack" && cd generator-cljs-fullstack; fi
 install:
-  - sudo apt-get -y install nodejs
+  - sudo apt-get -y install nodejs openjdk-6-jdk
   - echo "n" | npm install -g yo
   - npm install
   - npm link
