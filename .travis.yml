@@ -3,7 +3,7 @@ before_install:
   - if [ "$currentfolder" != 'generator-cljs-fullstack' ]; then cd .. && eval "mv $currentfolder generator-cljs-fullstack" && cd generator-cljs-fullstack; fi
 install:
   - sudo apt-get -y install nodejs
-  - npm install -g yeoman
+  - npm install -g yo
   - npm install
   - npm link
 script: "./run-integration-tests.sh"
