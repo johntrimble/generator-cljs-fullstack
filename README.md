@@ -1,4 +1,4 @@
-# Cljs Full Stack
+# Cljs Full Stack [![Build Status](https://travis-ci.org/johntrimble/generator-cljs-fullstack.png)](https://travis-ci.org/johntrimble/generator-cljs-fullstack)
 
 Yeoman generator for building web applications leveraging ClojureScript on both the front-end and back-end.
 
