@@ -4,8 +4,7 @@ before_install:
 install:
   - sudo wget "https://raw.github.com/technomancy/leiningen/stable/bin/lein" -O /bin/lein
   - sudo chmod a+x /bin/lein
-  - sudo apt-get -y install nodejs openjdk-6-jdk ruby
-  - gem install compass
+  - sudo apt-get -y install nodejs openjdk-6-jdk ruby-compass
   - echo "n" | npm install -g yo
   - npm install
   - npm link
