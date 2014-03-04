@@ -28,15 +28,23 @@ function createConfig() {
     distServer: 'dist',
     // cljsbuild's target directory for dumping server JS data
     generatedServerDir: 'target/server',
+    generatedServerTestDir: 'target/test/server',
     // cljsbuild's target directory for dumping client JS data
     generatedClientDir: 'target/public',
+    generatedClientTestDir: 'target/test/client'
   };
 
   // cljsbuild's artifact for the main client JS
   config.generatedClientMainJs = config.generatedClientDir + '/scripts/' + 'main.js';
 
+  // cljsbuild's artifact for the client tests
+  config.generatedClientTestMainJs = config.generatedClientTestDir + '/' + 'main.js';
+
   // cljsbuild's artifact for the main server JS
   config.generatedServerMainJs = config.generatedServerDir + '/' + 'main.js';
+
+  // cljsbuild's artifact for the main server test
+  config.generatedServerTestMainJs = config.generatedServerTestDir + '/' + 'main.js';
 
   return config;
 }
@@ -62,6 +70,20 @@ module.exports = function (grunt) {
         files: ['<%%= config.generatedServerMainJs %>'],
         options: {
           livereload: true
+        }
+      },
+      clientTest: {
+        files: ['<%%= config.generatedClientTestMainJs %>'],
+        tasks: ['bgShell:clientTest'],
+        options: {
+          livereload: false
+        }
+      },
+      serverTest: {
+        files: ['<%%= config.generatedServerTestMainJs %>'],
+        tasks: ['bgShell:serverTest'],
+        options: {
+          livereload: false
         }
       },
       gruntfile: {
@@ -255,27 +277,33 @@ module.exports = function (grunt) {
       },
       cljsBuildOnceServer: {
         cmd: buildCljsbuildCommandString(null, 'once', 'server'),
-        bg: false
+        bg: false,
+        fail: true
       },
       cljsBuildOnceServerTest: {
         cmd: buildCljsbuildCommandString(null, 'once', 'server-test'),
-        bg: false
+        bg: false,
+        fail: true
       },
       cljsBuildOnceServerDist: {
         cmd: buildCljsbuildCommandString('production', 'once', 'server'),
-        bg: false
+        bg: false,
+        fail: true
       },
       cljsBuildOnceClient: {
         cmd: buildCljsbuildCommandString(null, 'once', 'client'),
-        bg: false
+        bg: false,
+        fail: true
       },
       cljsBuildOnceClientTest: {
         cmd: buildCljsbuildCommandString(null, 'once', 'client-test'),
-        bg: false
+        bg: false,
+        fail: true
       },
       cljsBuildOnceClientDist: {
         cmd: buildCljsbuildCommandString('production', 'once', 'client'),
-        bg: false
+        bg: false,
+        fail: true
       },
       cljsBuildAutoServer: {
         cmd: buildCljsbuildCommandString(null, 'auto', 'server'),
@@ -300,6 +328,46 @@ module.exports = function (grunt) {
         bg: true,
         stdout: true,
         stderr: true
+      },
+      clientTest: {
+        cmd: function() {
+          // Polyfills for PhantomJS
+          var phantomPolyfills = [
+            "scripts/phantomjs-shims.js"
+          ];
+
+          // External JavaScript dependencies (e.g. JQuery, React, ...)
+          var deps = [
+            "app/bower_components/react/react.js",
+            grunt.config('config.generatedClientTestMainJs')
+          ];
+
+          var phantom = './node_modules/.bin/phantomjs';
+
+          var testRunner = 'scripts/phantomjs-specljs-runner.js'
+
+          var cmd = [phantom, testRunner].concat(
+            phantomPolyfills, 
+            deps).join(' ');
+
+          console.log(cmd);
+
+          return cmd;
+        },
+        bg: false,
+        stdout: true,
+        stderr: true,
+        fail: true
+      },
+      serverTest: {
+        cmd: function() {
+          var cmd = ['node', grunt.config('config.generatedServerTestMainJs')].join(' ');
+          return cmd;
+        },
+        bg: false,
+        stdout: true,
+        stderr: true,
+        fail: true
       }
     },
 
@@ -439,7 +507,9 @@ module.exports = function (grunt) {
   grunt.registerTask('test', [
     'clean:dist',
     'bgShell:cljsBuildOnceClientTest',
-    'bgShell:cljsBuildOnceServerTest'
+    'bgShell:clientTest',
+    'bgShell:cljsBuildOnceServerTest',
+    'bgShell:serverTest'
   ]);
 
   grunt.registerTask('default', [

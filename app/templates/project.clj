@@ -30,7 +30,6 @@
                                    :optimizations :simple}}
                        :server-test
                        {:source-paths ["src/common" "src/server" "test/server"]
-                        :notify-command ["node" "target/test/server/main.js"]
                         :compiler {:output-to "target/test/server/main.js"
                                    :target :nodejs
                                    :output-dir "target/test/server/out"
@@ -44,11 +43,6 @@
                                    :optimizations :whitespace}}
                        :client-test
                        {:source-paths ["src/common" "src/client" "test/client"]
-                        :notify-command ["./node_modules/.bin/phantomjs"
-                                         "scripts/phantomjs-specljs-runner.js"
-                                         "scripts/phantomjs-shims.js"
-                                         "app/bower_components/react/react.js"
-                                         "target/test/client/main.js"]
                         :compiler {:output-to "target/test/client/main.js"
                                    :output-dir "target/test/client/out"
                                    :source-map "target/test/client/main.js.map"

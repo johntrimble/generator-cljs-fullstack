@@ -10,6 +10,7 @@
   ;; Fixes exception strack traces with source maps
   (-> "source-map-support" js/require .install)
   (set! armed true)
-  (run-specs :color true))
+  (.exit js/process (run-specs :color true)))
+
 
 (set! *main-cli-fn* -main)
