@@ -11,8 +11,8 @@ for( var i=0; i < phantom.args.length; i++ ) {
 }
 
 var result = p.evaluate(function () {
-  specljs.run.standard.armed = true;
-  return specljs.run.standard.run_specs(
+  speclj.run.standard.armed = true;
+  return speclj.run.standard.run_specs(
      cljs.core.keyword("color"), true
   );
 });

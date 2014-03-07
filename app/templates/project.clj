@@ -1,12 +1,11 @@
 (defproject <%= _.slugify(appname) %> "0.0.0-SNAPSHOT"
   :description "<%= appname %>"
   :dependencies [[org.clojure/clojure "1.5.1"]
-                 [org.clojure/clojurescript "0.0-2156"]
+                 [org.clojure/clojurescript "0.0-2173"]
                  [om "0.4.2"]
-                 [specljs "2.9.1"]]
+                 [speclj "3.0.1"]]
 
   :plugins [[lein-cljsbuild "1.0.1"]
-            [specljs "2.9.1"]
             [lein-pprint "1.1.1"]]
 
   :profiles {:production
@@ -25,8 +24,7 @@
                                    :target :nodejs
                                    :output-dir "target/server/out"
                                    :source-map "target/server/main.js.map"
-                                   ; pending: http://dev.clojure.org/jira/browse/CLJS-743
-                                   ;:language-in :ecmascript5
+                                   :language-in :ecmascript5
                                    :optimizations :simple}}
                        :server-test
                        {:source-paths ["src/common" "src/server" "test/server"]
@@ -34,16 +32,19 @@
                                    :target :nodejs
                                    :output-dir "target/test/server/out"
                                    :source-map "target/test/server/main.js.map"
+                                   :language-in :ecmascript5
                                    :optimizations :simple}}
                        :client
                        {:source-paths ["src/common" "src/client" "src/client-bootstrap"]
                         :compiler {:output-to "target/public/scripts/main.js"
                                    :output-dir "target/public/scripts/out"
                                    :source-map "target/public/scripts/main.js.map"
+                                   :language-in :ecmascript5
                                    :optimizations :whitespace}}
                        :client-test
                        {:source-paths ["src/common" "src/client" "test/client"]
                         :compiler {:output-to "target/test/client/main.js"
                                    :output-dir "target/test/client/out"
                                    :source-map "target/test/client/main.js.map"
+                                   :language-in :ecmascript5
                                    :optimizations :whitespace}}}})

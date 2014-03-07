@@ -1,14 +1,14 @@
 (ns <%= _.slugify(appname) %>.client.client-tests
-  (:require [specljs.core :refer-macros [describe
-                                         it
-                                         should==
-                                         should=
-                                         should-not==
-                                         should-not=
-                                         should-not
-                                         should
-                                         should-not-contain
-                                         should-contain]]
+  (:require [speclj.core :refer-macros [describe
+                                        it
+                                        should==
+                                        should=
+                                        should-not==
+                                        should-not=
+                                        should-not
+                                        should
+                                        should-not-contain
+                                        should-contain]]
             [example.client.core :refer [row-major->columns]]))
             
 (enable-console-print!)

@@ -1,6 +1,6 @@
 (ns test.test
-  (:require [specljs.run.standard :refer [armed run-specs]]
-            [specljs.platform]))
+  (:require [speclj.run.standard :refer [armed run-specs]]
+            [speclj.platform]))
 
 (set! *print-fn* (fn [thing] (-> js/process
                                  (.-stdout)

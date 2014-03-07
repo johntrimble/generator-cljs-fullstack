@@ -1,14 +1,14 @@
 (ns <%= _.slugify(appname) %>.server.server-tests
-  (:require [specljs.core :refer-macros [describe
-                                         it
-                                         should==
-                                         should=
-                                         should-not==
-                                         should-not=
-                                         should-not
-                                         should
-                                         should-not-contain
-                                         should-contain]]
+  (:require [speclj.core :refer-macros [describe
+                                        it
+                                        should==
+                                        should=
+                                        should-not==
+                                        should-not=
+                                        should-not
+                                        should
+                                        should-not-contain
+                                        should-contain]]
             [<%= _.slugify(appname) %>.server.handlers :as handlers]))
 
 (let [headers (atom {})
