@@ -13,10 +13,14 @@
               {:builds
                {:client {:compiler {:optimizations :advanced
                                     :pretty-print false
-                                    :externs ["app/bower_components/react/react.js"]}}
+                                    :externs ["app/bower_components/react/react.js"]
+                                    :closure-warnings {:externs-validation :off
+                                                       :non-standard-jsdoc :off}}}
                 :client-test {:compiler {:optimizations :advanced
                                          :pretty-print false
-                                         :externs ["app/bower_components/react/react.js"]}}}}}}
+                                         :externs ["app/bower_components/react/react.js"]
+                                         :closure-warnings {:externs-validation :off
+                                                            :non-standard-jsdoc :off}}}}}}}
 
   :cljsbuild {:builds {:server
                        {:source-paths ["src/common" "src/server" "src/server-bootstrap"]

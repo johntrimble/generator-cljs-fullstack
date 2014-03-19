@@ -9,14 +9,6 @@ function buildCljsbuildCommandString(
 
   var p = leinProfile ? 'with-profile ' + leinProfile : '';
   var cmd = 'lein ' + p + ' cljsbuild ' + buildType + ' ' + target;
-  if( 'production' === leinProfile ) {
-    // This is a hack. We don't use actual extern files when building 
-    // for production, which causes warnings, which seems to cause Grunt 
-    // to bail out on this task due to warnings. I'm not entirely sure
-    // if this is the reason, but redirecting standard error seems to 
-    // resolve the issue for the time being.
-    cmd += ' 2>&1'
-  }
   return cmd  
 }
 
